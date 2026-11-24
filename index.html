@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <script>
-    // Configuração do Tailwind para usar Plus Jakarta Sans como fonte padrão
+    // Configuração do Tailwind com a paleta escura mística
     tailwind.config = {
       theme: {
         extend: {
@@ -24,8 +24,12 @@
             display: ['"Montserrat"', 'sans-serif'],
           },
           colors: {
-            navy: '#13253d',
-            pillDark: '#14213d',
+            obsidian: '#06060a',
+            moonlight: '#f4f1ff',
+            lavenderMuted: '#b8add2',
+            amethyst: '#3b185f',
+            darkPlum: '#3a1130',
+            midnight: '#121836',
           },
         },
       },
@@ -38,48 +42,48 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      color: #13253d;
+      background-color: #06060a;
+      color: #f4f1ff;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Fundo com gradiente aurora/mesh suave e movimento orgânico */
+    /* Fundo preto obsidiana com gradiente aurora místico suave */
     .aurora-bg {
       position: fixed;
       inset: 0;
-      z-index: -2;
-      background-color: #7ec8ff;
+      z-index: -3;
+      background-color: #06060a;
       background-image:
-        radial-gradient(at 12% 28%, #56d8ff 0px, transparent 58%),
-        radial-gradient(at 88% 12%, #d4c4ff 0px, transparent 55%),
-        radial-gradient(at 78% 42%, #c2b7ff 0px, transparent 52%),
-        radial-gradient(at 15% 88%, #3ce8ff 0px, transparent 56%),
-        radial-gradient(at 86% 86%, #3ce8ff 0px, transparent 54%),
-        radial-gradient(at 50% 50%, #7ec8ff 0px, transparent 65%);
-      background-size: 135% 135%;
-      animation: auroraDrift 18s ease-in-out infinite alternate;
+        radial-gradient(at 14% 24%, rgba(59, 24, 95, 0.58) 0px, transparent 56%),
+        radial-gradient(at 86% 16%, rgba(18, 24, 54, 0.78) 0px, transparent 54%),
+        radial-gradient(at 78% 68%, rgba(58, 17, 48, 0.55) 0px, transparent 55%),
+        radial-gradient(at 18% 84%, rgba(18, 24, 54, 0.65) 0px, transparent 52%),
+        radial-gradient(at 50% 48%, rgba(28, 14, 48, 0.42) 0px, transparent 62%);
+      background-size: 140% 140%;
+      animation: auroraDrift 22s ease-in-out infinite alternate;
     }
 
-    /* Camada sutil de brilho difuso adicional para profundidade */
+    /* Camada sutil de brilho difuso noturno para profundidade */
     .aurora-glow {
       position: fixed;
-      inset: -10%;
-      z-index: -1;
+      inset: -12%;
+      z-index: -2;
       pointer-events: none;
       background:
-        radial-gradient(circle at 22% 45%, rgba(60, 232, 255, 0.42) 0%, transparent 45%),
-        radial-gradient(circle at 82% 22%, rgba(212, 196, 255, 0.55) 0%, transparent 48%),
-        radial-gradient(circle at 75% 82%, rgba(60, 232, 255, 0.45) 0%, transparent 42%);
-      filter: blur(40px);
-      animation: glowFloat 22s ease-in-out infinite alternate;
+        radial-gradient(circle at 22% 38%, rgba(92, 42, 148, 0.24) 0%, transparent 46%),
+        radial-gradient(circle at 80% 28%, rgba(58, 17, 48, 0.28) 0%, transparent 48%),
+        radial-gradient(circle at 65% 82%, rgba(30, 40, 92, 0.26) 0%, transparent 44%);
+      filter: blur(56px);
+      animation: glowFloat 26s ease-in-out infinite alternate;
     }
 
     @keyframes auroraDrift {
       0% {
-        background-position: 0% 35%;
+        background-position: 0% 30%;
       }
       50% {
-        background-position: 60% 65%;
+        background-position: 65% 70%;
       }
       100% {
         background-position: 100% 25%;
@@ -91,25 +95,67 @@
         transform: translate3d(0, 0, 0) scale(1);
       }
       50% {
-        transform: translate3d(-2%, 2%, 0) scale(1.04);
+        transform: translate3d(-2%, 2.5%, 0) scale(1.05);
       }
       100% {
-        transform: translate3d(2%, -2%, 0) scale(1.02);
+        transform: translate3d(2.5%, -2%, 0) scale(1.02);
       }
     }
 
-    /* Números tabulares para evitar trepidação a cada segundo */
+    /* Camada de estrelas sutis piscando ao fundo */
+    #starfield {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient-star {
+      position: absolute;
+      border-radius: 9999px;
+      background: #f4f1ff;
+      box-shadow: 0 0 6px rgba(216, 196, 255, 0.75);
+      opacity: 0.15;
+      animation: starTwinkle var(--twinkle-dur, 4.5s) ease-in-out infinite alternate;
+      animation-delay: var(--twinkle-delay, 0s);
+    }
+
+    @keyframes starTwinkle {
+      0% {
+        opacity: 0.1;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scale(1.15);
+      }
+      100% {
+        opacity: 0.2;
+        transform: scale(0.9);
+      }
+    }
+
+    /* Números tabulares com brilho suave de luar */
     .tabular-nums {
       font-variant-numeric: tabular-nums;
     }
 
-    /* Sombra difusa suave no botão branco (estilo SaaS minimalista) */
-    .soft-pill-shadow {
-      box-shadow: 0 12px 28px -6px rgba(19, 37, 61, 0.16), 0 4px 10px -2px rgba(19, 37, 61, 0.08);
+    .moonlight-glow {
+      text-shadow: 0 0 28px rgba(196, 168, 255, 0.24), 0 0 8px rgba(244, 241, 255, 0.14);
     }
 
-    .soft-pill-shadow:hover {
-      box-shadow: 0 16px 34px -6px rgba(19, 37, 61, 0.22), 0 6px 14px -2px rgba(19, 37, 61, 0.1);
+    /* Brilho suave lavanda-púrpura no botão principal */
+    .mystic-pill-shadow {
+      box-shadow:
+        0 10px 30px -6px rgba(168, 128, 255, 0.34),
+        0 0 18px rgba(216, 196, 255, 0.18);
+    }
+
+    .mystic-pill-shadow:hover {
+      box-shadow:
+        0 14px 36px -4px rgba(186, 148, 255, 0.48),
+        0 0 24px rgba(233, 213, 255, 0.28);
     }
 
     /* Transição suave das frases */
@@ -127,14 +173,14 @@
       transform: translateY(0);
     }
 
-    /* Marca d'água gigante ancorada na borda inferior */
+    /* Marca d'água gigante "ENFEITIÇADO" ancorada na borda inferior */
     .bottom-watermark {
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: clamp(3.6rem, 16.8vw, 19.5rem);
-      line-height: 0.76;
+      font-size: clamp(2.6rem, 12.6vw, 15.5rem);
+      line-height: 0.78;
       letter-spacing: -0.02em;
-      color: rgba(255, 255, 255, 0.22);
+      color: rgba(216, 196, 255, 0.055);
       user-select: none;
       -webkit-user-select: none;
       pointer-events: none;
@@ -143,55 +189,57 @@
       transform: translateY(8%);
     }
 
-    /* Animação dos corações flutuantes ao clicar em "Nova frase" */
-    @keyframes floatHeartUp {
+    /* Partículas místicas flutuantes ao clicar em "Nova frase" */
+    @keyframes floatMysticUp {
       0% {
         opacity: 0;
-        transform: translate(-50%, 0) scale(0.5) rotate(0deg);
+        transform: translate(-50%, 0) scale(0.45) rotate(0deg);
       }
       18% {
-        opacity: 0.92;
+        opacity: 0.95;
       }
       100% {
         opacity: 0;
-        transform: translate(calc(-50% + var(--drift-x, 0px)), -95px) scale(1.15) rotate(var(--rot, 12deg));
+        transform: translate(calc(-50% + var(--drift-x, 0px)), -105px) scale(1.15) rotate(var(--rot, 16deg));
       }
     }
 
-    .floating-heart {
+    .floating-mystic {
       position: fixed;
       pointer-events: none;
       z-index: 60;
-      animation: floatHeartUp var(--dur, 1.5s) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      filter: drop-shadow(0 0 6px rgba(196, 168, 255, 0.55));
+      animation: floatMysticUp var(--dur, 1.55s) cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    /* Animação contínua de corações para o grande dia (05/12) */
+    /* Celebração mística contínua quando o grande dia (05/12) chega */
     @keyframes celebrationRise {
       0% {
         opacity: 0;
-        transform: translateY(0) translateX(0) scale(0.6);
+        transform: translateY(0) translateX(0) scale(0.6) rotate(0deg);
       }
       15% {
-        opacity: 0.7;
+        opacity: 0.8;
       }
       85% {
-        opacity: 0.5;
+        opacity: 0.55;
       }
       100% {
         opacity: 0;
-        transform: translateY(-105vh) translateX(var(--sway, 30px)) scale(1.1);
+        transform: translateY(-108vh) translateX(var(--sway, 35px)) scale(1.15) rotate(25deg);
       }
     }
 
-    .celebration-heart {
+    .celebration-particle {
       position: fixed;
-      bottom: -30px;
+      bottom: -32px;
       pointer-events: none;
       z-index: 5;
-      animation: celebrationRise var(--dur, 7s) linear forwards;
+      filter: drop-shadow(0 0 8px rgba(216, 196, 255, 0.55));
+      animation: celebrationRise var(--dur, 7.5s) linear forwards;
     }
 
-    /* Transição do modal frosted-glass */
+    /* Transição do modal frosted-glass escuro */
     .modal-backdrop {
       transition: opacity 250ms ease;
     }
@@ -200,29 +248,30 @@
     }
   </style>
 </head>
-<body class="min-h-[100dvh] flex flex-col justify-between relative font-sans selection:bg-navy/15 selection:text-navy">
+<body class="min-h-[100dvh] flex flex-col justify-between relative font-sans selection:bg-purple-400/25 selection:text-moonlight">
 
-  <!-- Camadas de fundo gradiente aurora -->
+  <!-- Camadas de fundo escuro aurora + estrelas sutis -->
   <div class="aurora-bg" aria-hidden="true"></div>
   <div class="aurora-glow" aria-hidden="true"></div>
+  <div id="starfield" aria-hidden="true"></div>
 
   <!-- Barra de navegação superior minimalista -->
-  <header class="w-full bg-white/15 backdrop-blur-[2px] border-b border-white/15 z-20">
+  <header class="w-full bg-black/25 backdrop-blur-md border-b border-white/10 z-20">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 h-16 sm:h-[72px] flex items-center justify-between">
-      <!-- Marca esquerda: 05 • 12 -->
-      <div class="flex items-center gap-2 text-navy font-extrabold tracking-[0.14em] text-sm sm:text-base uppercase select-none">
+      <!-- Marca esquerda: 05 + Lua Crescente + 12 -->
+      <div class="flex items-center gap-2 text-moonlight font-extrabold tracking-[0.14em] text-sm sm:text-base uppercase select-none">
         <span>05</span>
-        <svg class="w-3 h-3 text-navy/80 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        <svg class="w-3.5 h-3.5 text-purple-300/90 fill-current drop-shadow-[0_0_6px_rgba(216,180,254,0.5)]" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
         <span>12</span>
       </div>
 
-      <!-- Botão escuro à direita: Recadinho -->
+      <!-- Botão elegante à direita: Recadinho -->
       <button
         id="openNoteBtn"
         type="button"
-        class="bg-pillDark hover:bg-[#1c2d50] active:scale-95 text-white text-xs sm:text-[13px] font-medium px-5 sm:px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-navy/40 focus:ring-offset-2 focus:ring-offset-transparent"
+        class="bg-white/10 hover:bg-white/15 active:scale-95 border border-purple-300/25 text-purple-50 text-xs sm:text-[13px] font-medium px-5 sm:px-6 py-2.5 rounded-full shadow-md hover:shadow-purple-900/30 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-300/40 focus:ring-offset-2 focus:ring-offset-obsidian"
       >
         Recadinho
       </button>
@@ -236,7 +285,7 @@
       <!-- Título superior em duas linhas -->
       <h1
         id="mainHeading"
-        class="text-navy font-light uppercase tracking-[0.14em] text-lg sm:text-2xl md:text-[26px] leading-[1.45] mb-8 sm:mb-11 select-none"
+        class="text-moonlight/95 font-light uppercase tracking-[0.16em] text-lg sm:text-2xl md:text-[26px] leading-[1.45] mb-8 sm:mb-11 select-none"
       >
         NOSSO ENCONTRO<br />ESTÁ CHEGANDO
       </h1>
@@ -250,16 +299,16 @@
         <div class="flex flex-col items-center min-w-[60px] sm:min-w-[96px] md:min-w-[120px]">
           <span
             id="days"
-            class="tabular-nums text-navy font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
+            class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-navy/80 font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
             Dias
           </span>
         </div>
 
         <!-- Separador : -->
         <span
-          class="text-navy font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none opacity-90"
+          class="text-purple-200/75 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
           aria-hidden="true"
         >:</span>
 
@@ -267,16 +316,16 @@
         <div class="flex flex-col items-center min-w-[60px] sm:min-w-[96px] md:min-w-[120px]">
           <span
             id="hours"
-            class="tabular-nums text-navy font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
+            class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-navy/80 font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
             Horas
           </span>
         </div>
 
         <!-- Separador : -->
         <span
-          class="text-navy font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none opacity-90"
+          class="text-purple-200/75 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
           aria-hidden="true"
         >:</span>
 
@@ -284,16 +333,16 @@
         <div class="flex flex-col items-center min-w-[60px] sm:min-w-[96px] md:min-w-[120px]">
           <span
             id="minutes"
-            class="tabular-nums text-navy font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
+            class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-navy/80 font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
             Minutos
           </span>
         </div>
 
         <!-- Separador : -->
         <span
-          class="text-navy font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none opacity-90"
+          class="text-purple-200/75 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
           aria-hidden="true"
         >:</span>
 
@@ -301,9 +350,9 @@
         <div class="flex flex-col items-center min-w-[60px] sm:min-w-[96px] md:min-w-[120px]">
           <span
             id="seconds"
-            class="tabular-nums text-navy font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
+            class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-navy/80 font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
             Segundos
           </span>
         </div>
@@ -314,70 +363,72 @@
         <p
           id="cutePhrase"
           aria-live="polite"
-          class="phrase-transition phrase-visible text-navy/85 font-normal text-sm sm:text-base md:text-[17px] leading-relaxed"
+          class="phrase-transition phrase-visible text-purple-100/85 font-normal text-sm sm:text-base md:text-[17px] leading-relaxed"
         >
           O feitiço segue fazendo efeito.
         </p>
       </div>
 
-      <!-- Botão Branco Interativo (Nova frase) -->
+      <!-- Botão Interativo (Nova frase) -->
       <button
         id="nextPhraseBtn"
         type="button"
-        class="group inline-flex items-center justify-center gap-2.5 bg-white hover:bg-white/95 active:scale-95 text-navy font-medium text-sm sm:text-[15px] px-10 sm:px-12 py-3.5 rounded-full soft-pill-shadow transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-navy/30 focus:ring-offset-2 focus:ring-offset-transparent"
+        class="group inline-flex items-center justify-center gap-2.5 bg-purple-100/95 hover:bg-white active:scale-95 text-[#0d0a16] font-medium text-sm sm:text-[15px] px-10 sm:px-12 py-3.5 rounded-full mystic-pill-shadow transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-300/50 focus:ring-offset-2 focus:ring-offset-obsidian"
       >
         <span>Nova frase</span>
+        <!-- Ícone sutil de lua crescente e estrela -->
         <svg
-          class="w-4 h-4 text-rose-400 group-hover:scale-110 transition-transform duration-200 fill-current"
+          class="w-4 h-4 text-purple-700 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-200 fill-current"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path d="M12 2L14.2 8.2L20.5 10.5L14.2 12.8L12 19L9.8 12.8L3.5 10.5L9.8 8.2L12 2Z" />
         </svg>
       </button>
 
     </div>
   </main>
 
-  <!-- Rodapé com Marca d'Água Gigante "SAUDADES" -->
+  <!-- Rodapé com Marca d'Água Gigante "ENFEITIÇADO" -->
   <footer class="relative w-full overflow-hidden pt-4 sm:pt-6 z-10 flex flex-col items-center justify-end">
-    <div class="bottom-watermark w-full" aria-hidden="true">SAUDADES</div>
-    <p class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 w-full text-center text-[11px] sm:text-xs font-medium tracking-wide text-navy/65 px-4 select-none">
-      Feito pensando em você • 05/12
+    <div class="bottom-watermark w-full" aria-hidden="true">ENFEITIÇADO</div>
+    <p class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 w-full text-center text-[11px] sm:text-xs font-medium tracking-wide text-lavenderMuted/75 px-4 select-none">
+      Feito pensando na minha bruxa • 05/12
     </p>
   </footer>
 
-  <!-- Modal Frosted-Glass do Recadinho -->
+  <!-- Modal Frosted-Glass Escuro do Recadinho -->
   <div
     id="noteModal"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modalTitle"
-    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-5 bg-navy/25 backdrop-blur-md opacity-0"
+    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-5 bg-black/65 backdrop-blur-md opacity-0"
   >
     <div
       id="noteModalCard"
-      class="modal-card relative w-full max-w-md rounded-3xl bg-white/75 backdrop-blur-xl border border-white/60 shadow-2xl p-7 sm:p-9 text-center opacity-0 scale-95"
+      class="modal-card relative w-full max-w-md rounded-3xl bg-[#100d1a]/85 backdrop-blur-xl border border-purple-300/20 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.75)] p-7 sm:p-9 text-center opacity-0 scale-95"
     >
-      <!-- Ícone sutil de coração no topo -->
-      <div class="w-11 h-11 mx-auto mb-4 rounded-2xl bg-navy/10 flex items-center justify-center text-navy">
-        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      <!-- Emblema luminoso de lua crescente + brilho no topo -->
+      <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-purple-400/10 border border-purple-300/20 shadow-[0_0_24px_rgba(168,128,255,0.22)] flex items-center justify-center text-purple-200">
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19.5 14.2A7.5 7.5 0 0 1 9.8 4.5a7.5 7.5 0 1 0 9.7 9.7z" />
+          <path d="M17.5 3.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z" />
         </svg>
       </div>
 
-      <h2 id="modalTitle" class="text-navy font-semibold text-lg sm:text-xl tracking-tight mb-3">
-        Um recadinho para você
+      <h2 id="modalTitle" class="text-moonlight font-semibold text-lg sm:text-xl tracking-tight mb-3">
+        Um recadinho para a minha bruxa
       </h2>
 
-      <p class="text-navy/80 text-sm sm:text-[15px] leading-relaxed mb-7">
-        Falta um tempo aí gente se ver. Enquanto o dia 05/12 não chega, fiz esse cantinho para contar cada segundo que falta.
+      <p class="text-lavenderMuted text-sm sm:text-[15px] leading-relaxed mb-7">
+        Falta pouco pra gente se ver. Enquanto o dia 05/12 não chega, fiz esse cantinho para contar cada segundo que falta — pelo visto o seu feitiço funcionou mesmo.
       </p>
 
       <button
         id="closeNoteBtn"
         type="button"
-        class="bg-pillDark hover:bg-[#1c2d50] active:scale-95 text-white text-sm font-medium px-8 py-2.5 rounded-full shadow-md transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-navy/40"
+        class="bg-white/10 hover:bg-white/15 active:scale-95 border border-purple-300/25 text-moonlight text-sm font-medium px-8 py-2.5 rounded-full shadow-md transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-300/40"
       >
         Fechar
       </button>
@@ -387,6 +438,32 @@
   <script>
     (function () {
       'use strict';
+
+      // =========================================================
+      // 0. ESTRELAS SUTIS AO FUNDO (AMBIENT STARLIGHT)
+      // =========================================================
+      function initStarfield() {
+        const container = document.getElementById('starfield');
+        if (!container) return;
+
+        // Quantidade delicada e esparsa para manter o visual ultra-limpo
+        const starCount = window.innerWidth < 640 ? 22 : 38;
+
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement('span');
+          star.className = 'ambient-star';
+          const size = (1 + Math.random() * 1.8).toFixed(1);
+          star.style.width = `${size}px`;
+          star.style.height = `${size}px`;
+          star.style.left = `${(Math.random() * 100).toFixed(2)}%`;
+          star.style.top = `${(Math.random() * 100).toFixed(2)}%`;
+          star.style.setProperty('--twinkle-dur', `${(3.5 + Math.random() * 4.5).toFixed(2)}s`);
+          star.style.setProperty('--twinkle-delay', `${(Math.random() * 5).toFixed(2)}s`);
+          container.appendChild(star);
+        }
+      }
+
+      initStarfield();
 
       // =========================================================
       // 1. CONFIGURAÇÃO DA DATA-ALVO (05/12/2026 às 00:00:00)
@@ -401,7 +478,6 @@
       const mainHeadingEl = document.getElementById('mainHeading');
 
       let celebrationStarted = false;
-      let celebrationInterval = null;
 
       /**
        * Formata um número com dois dígitos (ex: 4 -> "04")
@@ -411,36 +487,64 @@
       }
 
       /**
-       * Inicia uma chuva suave de corações quando o grande dia chega
+       * Retorna o SVG de uma partícula mística (coração, brilho de 4 pontas ou lua crescente)
        */
-      function startCelebrationHearts() {
+      function getMysticSvg(type, size, color) {
+        if (type === 'moon') {
+          return `
+            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          `;
+        }
+        if (type === 'sparkle') {
+          return `
+            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}">
+              <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+            </svg>
+          `;
+        }
+        return `
+          <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        `;
+      }
+
+      /**
+       * Inicia uma celebração suave de luas, brilhos e corações quando o grande dia chega
+       */
+      function startCelebration() {
         if (celebrationStarted) return;
         celebrationStarted = true;
 
-        const spawnAmbientHeart = () => {
-          const heart = document.createElement('span');
-          heart.className = 'celebration-heart';
-          heart.setAttribute('aria-hidden', 'true');
-          heart.innerHTML = `
-            <svg width="${12 + Math.random() * 14}" height="${12 + Math.random() * 14}" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.72)">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-          `;
-          heart.style.left = `${Math.random() * 100}vw`;
-          heart.style.setProperty('--dur', `${6 + Math.random() * 5}s`);
-          heart.style.setProperty('--sway', `${(Math.random() - 0.5) * 90}px`);
-          document.body.appendChild(heart);
+        const types = ['moon', 'sparkle', 'heart'];
+        const colors = ['rgba(216, 180, 254, 0.8)', 'rgba(244, 114, 182, 0.78)', 'rgba(244, 241, 255, 0.82)'];
+
+        const spawnAmbientParticle = () => {
+          const el = document.createElement('span');
+          el.className = 'celebration-particle';
+          el.setAttribute('aria-hidden', 'true');
+
+          const type = types[Math.floor(Math.random() * types.length)];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const size = 12 + Math.random() * 14;
+
+          el.innerHTML = getMysticSvg(type, size, color);
+          el.style.left = `${Math.random() * 100}vw`;
+          el.style.setProperty('--dur', `${6.5 + Math.random() * 5}s`);
+          el.style.setProperty('--sway', `${(Math.random() - 0.5) * 95}px`);
+          document.body.appendChild(el);
 
           setTimeout(() => {
-            heart.remove();
-          }, 11500);
+            el.remove();
+          }, 12000);
         };
 
-        // Gera alguns corações imediatamente e continua suavemente
-        for (let i = 0; i < 6; i++) {
-          setTimeout(spawnAmbientHeart, i * 350);
+        for (let i = 0; i < 7; i++) {
+          setTimeout(spawnAmbientParticle, i * 320);
         }
-        celebrationInterval = setInterval(spawnAmbientHeart, 1100);
+        setInterval(spawnAmbientParticle, 1050);
       }
 
       /**
@@ -457,7 +561,7 @@
             minutesEl.textContent = '00';
             secondsEl.textContent = '00';
             mainHeadingEl.innerHTML = 'CHEGOU O GRANDE DIA!';
-            startCelebrationHearts();
+            startCelebration();
             return;
           }
 
@@ -481,13 +585,17 @@
       setInterval(updateCountdown, 1000);
 
       // =========================================================
-      // 2. FRASES CARINHOSAS ROTATIVAS & CORAÇÕES FLUTUANTES
+      // 2. FRASES CARINHOSAS ROTATIVAS & PARTÍCULAS MÍSTICAS
       // =========================================================
       const PHRASES = [
+        'O feitiço segue fazendo efeito.',
         'Você não sai da minha cabeça nem por um segundo.',
+        'Que feitiço você jogou em mim que eu só penso no dia 05/12?',
         'Contando os dias, as horas e os minutos para te ver. Literalmente kkkkk',
+        'Enfeitiçado por você e sem a menor vontade de quebrar o feitiço.',
         'A saudade já está grande demais para caber nesse relógio.',
         'O dia 05/12 nunca demorou tanto para chegar.',
+        'Minha bruxa favorita, o tempo anda devagar demais longe de você.',
         'Cada segundo a menos aqui é um passo mais perto de você.',
         'Só queria poder adiantar o tempo até o nosso encontro.',
         'Penso em você o tempo todo — e ainda acho pouco.',
@@ -538,49 +646,47 @@
       }
 
       /**
-       * Cria de 3 a 5 pequenos corações flutuando a partir do botão clicado
+       * Cria de 4 a 6 partículas místicas (corações, brilhos e luas) subindo a partir do botão
        */
-      function spawnButtonHearts(buttonEl) {
+      function spawnButtonParticles(buttonEl) {
         const rect = buttonEl.getBoundingClientRect();
-        const count = 3 + Math.floor(Math.random() * 3); // 3 a 5 corações
-        const colors = ['#fb7185', '#f472b6', '#ffffff', '#13253d'];
+        const count = 4 + Math.floor(Math.random() * 3); // 4 a 6 partículas
+        const types = ['heart', 'sparkle', 'moon'];
+        const colors = ['#c084fc', '#e879f9', '#f472b6', '#f4f1ff', '#a78bfa'];
 
         for (let i = 0; i < count; i++) {
-          const heart = document.createElement('span');
-          heart.className = 'floating-heart';
-          heart.setAttribute('aria-hidden', 'true');
+          const particle = document.createElement('span');
+          particle.className = 'floating-mystic';
+          particle.setAttribute('aria-hidden', 'true');
 
+          const type = types[i % types.length];
           const size = 10 + Math.random() * 7;
           const color = colors[Math.floor(Math.random() * colors.length)];
-          const startX = rect.left + rect.width * (0.25 + Math.random() * 0.5);
-          const startY = rect.top + rect.height * 0.3;
-          const driftX = (Math.random() - 0.5) * 70;
-          const rot = (Math.random() - 0.5) * 40;
-          const dur = 1.15 + Math.random() * 0.55;
+          const startX = rect.left + rect.width * (0.18 + Math.random() * 0.64);
+          const startY = rect.top + rect.height * 0.28;
+          const driftX = (Math.random() - 0.5) * 85;
+          const rot = (Math.random() - 0.5) * 48;
+          const dur = 1.2 + Math.random() * 0.55;
 
-          heart.style.left = `${startX}px`;
-          heart.style.top = `${startY}px`;
-          heart.style.setProperty('--drift-x', `${driftX}px`);
-          heart.style.setProperty('--rot', `${rot}deg`);
-          heart.style.setProperty('--dur', `${dur}s`);
+          particle.style.left = `${startX}px`;
+          particle.style.top = `${startY}px`;
+          particle.style.setProperty('--drift-x', `${driftX}px`);
+          particle.style.setProperty('--rot', `${rot}deg`);
+          particle.style.setProperty('--dur', `${dur}s`);
 
-          heart.innerHTML = `
-            <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-          `;
+          particle.innerHTML = getMysticSvg(type, size, color);
 
-          document.body.appendChild(heart);
+          document.body.appendChild(particle);
 
           setTimeout(() => {
-            heart.remove();
-          }, dur * 1000 + 100);
+            particle.remove();
+          }, dur * 1000 + 120);
         }
       }
 
       // Evento do botão "Nova frase"
       nextPhraseBtn.addEventListener('click', () => {
-        spawnButtonHearts(nextPhraseBtn);
+        spawnButtonParticles(nextPhraseBtn);
         showNextPhrase();
         resetAutoRotate();
       });
@@ -589,7 +695,7 @@
       resetAutoRotate();
 
       // =========================================================
-      // 3. MODAL DE RECADINHO (FROSTED GLASS)
+      // 3. MODAL DE RECADINHO (FROSTED GLASS ESCURO)
       // =========================================================
       const openNoteBtn = document.getElementById('openNoteBtn');
       const closeNoteBtn = document.getElementById('closeNoteBtn');
@@ -599,7 +705,6 @@
       function openModal() {
         noteModal.classList.remove('hidden');
         noteModal.classList.add('flex');
-        // Força reflow para a transição funcionar suavemente
         requestAnimationFrame(() => {
           noteModal.classList.remove('opacity-0');
           noteModal.classList.add('opacity-100');
