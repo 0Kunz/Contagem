@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <script>
-    // Configuração do Tailwind com a paleta escura mística
+    // Configuração do Tailwind com a paleta escura e mística
     tailwind.config = {
       theme: {
         extend: {
@@ -25,11 +25,12 @@
           },
           colors: {
             obsidian: '#06060a',
-            moonlight: '#f4f1ff',
+            moonlight: '#f8fafc',
+            lavenderSoft: '#c4b5fd',
             lavenderMuted: '#b8add2',
-            amethyst: '#3b185f',
-            darkPlum: '#3a1130',
-            midnight: '#121836',
+            amethyst: '#3b1d6a',
+            darkPlum: '#4a154b',
+            midnight: '#0f172a',
           },
         },
       },
@@ -43,7 +44,7 @@
       padding: 0;
       overflow-x: hidden;
       background-color: #06060a;
-      color: #f4f1ff;
+      color: #f8fafc;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -55,11 +56,11 @@
       z-index: -3;
       background-color: #06060a;
       background-image:
-        radial-gradient(at 14% 24%, rgba(59, 24, 95, 0.58) 0px, transparent 56%),
-        radial-gradient(at 86% 16%, rgba(18, 24, 54, 0.78) 0px, transparent 54%),
-        radial-gradient(at 78% 68%, rgba(58, 17, 48, 0.55) 0px, transparent 55%),
-        radial-gradient(at 18% 84%, rgba(18, 24, 54, 0.65) 0px, transparent 52%),
-        radial-gradient(at 50% 48%, rgba(28, 14, 48, 0.42) 0px, transparent 62%);
+        radial-gradient(at 14% 24%, rgba(59, 29, 106, 0.62) 0px, transparent 56%),
+        radial-gradient(at 86% 16%, rgba(15, 23, 42, 0.85) 0px, transparent 54%),
+        radial-gradient(at 78% 68%, rgba(74, 21, 75, 0.56) 0px, transparent 55%),
+        radial-gradient(at 18% 84%, rgba(15, 23, 42, 0.72) 0px, transparent 52%),
+        radial-gradient(at 50% 48%, rgba(36, 16, 62, 0.42) 0px, transparent 62%);
       background-size: 140% 140%;
       animation: auroraDrift 22s ease-in-out infinite alternate;
     }
@@ -71,35 +72,23 @@
       z-index: -2;
       pointer-events: none;
       background:
-        radial-gradient(circle at 22% 38%, rgba(92, 42, 148, 0.24) 0%, transparent 46%),
-        radial-gradient(circle at 80% 28%, rgba(58, 17, 48, 0.28) 0%, transparent 48%),
-        radial-gradient(circle at 65% 82%, rgba(30, 40, 92, 0.26) 0%, transparent 44%);
+        radial-gradient(circle at 22% 38%, rgba(88, 38, 152, 0.25) 0%, transparent 46%),
+        radial-gradient(circle at 80% 28%, rgba(74, 21, 75, 0.28) 0%, transparent 48%),
+        radial-gradient(circle at 65% 82%, rgba(15, 23, 42, 0.35) 0%, transparent 44%);
       filter: blur(56px);
       animation: glowFloat 26s ease-in-out infinite alternate;
     }
 
     @keyframes auroraDrift {
-      0% {
-        background-position: 0% 30%;
-      }
-      50% {
-        background-position: 65% 70%;
-      }
-      100% {
-        background-position: 100% 25%;
-      }
+      0% { background-position: 0% 30%; }
+      50% { background-position: 65% 70%; }
+      100% { background-position: 100% 25%; }
     }
 
     @keyframes glowFloat {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-      50% {
-        transform: translate3d(-2%, 2.5%, 0) scale(1.05);
-      }
-      100% {
-        transform: translate3d(2.5%, -2%, 0) scale(1.02);
-      }
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-2%, 2.5%, 0) scale(1.05); }
+      100% { transform: translate3d(2.5%, -2%, 0) scale(1.02); }
     }
 
     /* Camada de estrelas sutis piscando ao fundo */
@@ -114,26 +103,17 @@
     .ambient-star {
       position: absolute;
       border-radius: 9999px;
-      background: #f4f1ff;
-      box-shadow: 0 0 6px rgba(216, 196, 255, 0.75);
+      background: #f8fafc;
+      box-shadow: 0 0 6px rgba(196, 181, 253, 0.78);
       opacity: 0.15;
       animation: starTwinkle var(--twinkle-dur, 4.5s) ease-in-out infinite alternate;
       animation-delay: var(--twinkle-delay, 0s);
     }
 
     @keyframes starTwinkle {
-      0% {
-        opacity: 0.1;
-        transform: scale(0.8);
-      }
-      50% {
-        opacity: 0.7;
-        transform: scale(1.15);
-      }
-      100% {
-        opacity: 0.2;
-        transform: scale(0.9);
-      }
+      0% { opacity: 0.1; transform: scale(0.8); }
+      50% { opacity: 0.72; transform: scale(1.15); }
+      100% { opacity: 0.2; transform: scale(0.9); }
     }
 
     /* Números tabulares com brilho suave de luar */
@@ -142,20 +122,20 @@
     }
 
     .moonlight-glow {
-      text-shadow: 0 0 28px rgba(196, 168, 255, 0.24), 0 0 8px rgba(244, 241, 255, 0.14);
+      text-shadow: 0 0 28px rgba(196, 181, 253, 0.26), 0 0 8px rgba(248, 250, 252, 0.14);
     }
 
     /* Brilho suave lavanda-púrpura no botão principal */
     .mystic-pill-shadow {
       box-shadow:
         0 10px 30px -6px rgba(168, 128, 255, 0.34),
-        0 0 18px rgba(216, 196, 255, 0.18);
+        0 0 18px rgba(196, 181, 253, 0.18);
     }
 
     .mystic-pill-shadow:hover {
       box-shadow:
         0 14px 36px -4px rgba(186, 148, 255, 0.48),
-        0 0 24px rgba(233, 213, 255, 0.28);
+        0 0 24px rgba(221, 214, 254, 0.28);
     }
 
     /* Transição suave das frases */
@@ -180,7 +160,7 @@
       font-size: clamp(2.6rem, 12.6vw, 15.5rem);
       line-height: 0.78;
       letter-spacing: -0.02em;
-      color: rgba(216, 196, 255, 0.055);
+      color: rgba(248, 250, 252, 0.055);
       user-select: none;
       -webkit-user-select: none;
       pointer-events: none;
@@ -189,26 +169,24 @@
       transform: translateY(8%);
     }
 
-    /* Partículas místicas flutuantes ao clicar em "Nova frase" */
+    /* Partículas místicas flutuantes ao clicar em "Nova frase" ou resolver o puzzle */
     @keyframes floatMysticUp {
       0% {
         opacity: 0;
         transform: translate(-50%, 0) scale(0.45) rotate(0deg);
       }
-      18% {
-        opacity: 0.95;
-      }
+      18% { opacity: 0.95; }
       100% {
         opacity: 0;
-        transform: translate(calc(-50% + var(--drift-x, 0px)), -105px) scale(1.15) rotate(var(--rot, 16deg));
+        transform: translate(calc(-50% + var(--drift-x, 0px)), -110px) scale(1.18) rotate(var(--rot, 16deg));
       }
     }
 
     .floating-mystic {
       position: fixed;
       pointer-events: none;
-      z-index: 60;
-      filter: drop-shadow(0 0 6px rgba(196, 168, 255, 0.55));
+      z-index: 80;
+      filter: drop-shadow(0 0 6px rgba(196, 181, 253, 0.6));
       animation: floatMysticUp var(--dur, 1.55s) cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
@@ -218,12 +196,8 @@
         opacity: 0;
         transform: translateY(0) translateX(0) scale(0.6) rotate(0deg);
       }
-      15% {
-        opacity: 0.8;
-      }
-      85% {
-        opacity: 0.55;
-      }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.55; }
       100% {
         opacity: 0;
         transform: translateY(-108vh) translateX(var(--sway, 35px)) scale(1.15) rotate(25deg);
@@ -234,19 +208,90 @@
       position: fixed;
       bottom: -32px;
       pointer-events: none;
-      z-index: 5;
-      filter: drop-shadow(0 0 8px rgba(216, 196, 255, 0.55));
+      z-index: 75;
+      filter: drop-shadow(0 0 8px rgba(196, 181, 253, 0.6));
       animation: celebrationRise var(--dur, 7.5s) linear forwards;
     }
 
-    /* Transição do modal frosted-glass escuro */
+    /* Transição dos modais frosted-glass escuros */
     .modal-backdrop {
       transition: opacity 250ms ease;
     }
     .modal-card {
       transition: opacity 280ms ease, transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
     }
+
+    /* =====================================================
+       ESTILO TÁTIL DO QUEBRA-CABEÇA 4x4 (KLOTSKI OBSIDIANA)
+       ===================================================== */
+    .klotski-frame {
+      background: linear-gradient(145deg, #161124 0%, #0b0912 100%);
+      box-shadow:
+        inset 0 2px 4px rgba(255, 255, 255, 0.06),
+        inset 0 -4px 10px rgba(0, 0, 0, 0.7),
+        0 20px 45px -12px rgba(0, 0, 0, 0.85),
+        0 0 30px -10px rgba(139, 92, 246, 0.28);
+    }
+
+    .klotski-well {
+      background: #07050c;
+      box-shadow:
+        inset 0 4px 12px rgba(0, 0, 0, 0.9),
+        inset 0 0 0 1px rgba(196, 181, 253, 0.08);
+    }
+
+    .puzzle-tile {
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      background: linear-gradient(155deg, #211a33 0%, #130f20 100%);
+      border: 1px solid rgba(196, 181, 253, 0.16);
+      box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.12),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.55),
+        0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 200ms ease,
+                  box-shadow 200ms ease,
+                  background 200ms ease;
+    }
+
+    .puzzle-tile:hover {
+      border-color: rgba(196, 181, 253, 0.42);
+      transform: translateY(-1px);
+    }
+
+    .puzzle-tile:active {
+      transform: scale(0.95);
+    }
+
+    /* Destaque suave em roxo/lavanda quando a peça já está na posição correta */
+    .puzzle-tile-correct {
+      background: linear-gradient(155deg, #322156 0%, #1d1336 100%);
+      border-color: rgba(196, 181, 253, 0.48);
+      box-shadow:
+        inset 0 1px 2px rgba(233, 213, 255, 0.22),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.5),
+        0 0 14px -2px rgba(167, 139, 250, 0.34);
+    }
+
+    .puzzle-empty {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px dashed rgba(196, 181, 253, 0.08);
+    }
+
+    @keyframes rewardReveal {
+      0% { opacity: 0; transform: translateY(12px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .reward-animate {
+      animation: rewardReveal 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
   </style>
+
+  <!-- GoatCounter: substitua SEU-CODIGO pelo código da sua conta em goatcounter.com -->
+  <script data-goatcounter="https://SEU-CODIGO.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="min-h-[100dvh] flex flex-col justify-between relative font-sans selection:bg-purple-400/25 selection:text-moonlight">
 
@@ -257,24 +302,41 @@
 
   <!-- Barra de navegação superior minimalista -->
   <header class="w-full bg-black/25 backdrop-blur-md border-b border-white/10 z-20">
-    <div class="max-w-7xl mx-auto px-5 sm:px-8 md:px-10 h-16 sm:h-[72px] flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 h-16 sm:h-[72px] flex items-center justify-between gap-2">
       <!-- Marca esquerda: 05 + Lua Crescente + 12 -->
-      <div class="flex items-center gap-2 text-moonlight font-extrabold tracking-[0.14em] text-sm sm:text-base uppercase select-none">
+      <div class="flex items-center gap-2 text-moonlight font-extrabold tracking-[0.14em] text-sm sm:text-base uppercase select-none shrink-0">
         <span>05</span>
-        <svg class="w-3.5 h-3.5 text-purple-300/90 fill-current drop-shadow-[0_0_6px_rgba(216,180,254,0.5)]" viewBox="0 0 24 24" aria-hidden="true">
+        <svg class="w-3.5 h-3.5 text-lavenderSoft fill-current drop-shadow-[0_0_6px_rgba(196,181,253,0.55)]" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
         <span>12</span>
       </div>
 
-      <!-- Botão elegante à direita: Recadinho -->
-      <button
-        id="openNoteBtn"
-        type="button"
-        class="bg-white/10 hover:bg-white/15 active:scale-95 border border-purple-300/25 text-purple-50 text-xs sm:text-[13px] font-medium px-5 sm:px-6 py-2.5 rounded-full shadow-md hover:shadow-purple-900/30 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-300/40 focus:ring-offset-2 focus:ring-offset-obsidian"
-      >
-        Recadinho
-      </button>
+      <!-- Botões elegantes à direita: Joguinho e Recadinho -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button
+          id="openGameBtn"
+          type="button"
+          class="inline-flex items-center gap-1.5 sm:gap-2 bg-purple-500/15 hover:bg-purple-500/25 active:scale-95 border border-lavenderSoft/40 text-purple-100 text-xs sm:text-[13px] font-medium px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-[0_0_16px_rgba(167,139,250,0.2)] hover:shadow-[0_0_22px_rgba(196,181,253,0.32)] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/40 focus:ring-offset-2 focus:ring-offset-obsidian"
+        >
+          <!-- Ícone de grade 2x2 (quebra-cabeça) -->
+          <svg class="w-3.5 h-3.5 text-lavenderSoft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.5" />
+            <rect x="14" y="3" width="7" height="7" rx="1.5" />
+            <rect x="3" y="14" width="7" height="7" rx="1.5" />
+            <path d="M17.5 14v7M14 17.5h7" />
+          </svg>
+          <span>Joguinho</span>
+        </button>
+
+        <button
+          id="openNoteBtn"
+          type="button"
+          class="bg-white/10 hover:bg-white/15 active:scale-95 border border-white/15 text-moonlight text-xs sm:text-[13px] font-medium px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-md transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/40 focus:ring-offset-2 focus:ring-offset-obsidian"
+        >
+          Recadinho
+        </button>
+      </div>
     </div>
   </header>
 
@@ -301,14 +363,14 @@
             id="days"
             class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderSoft/85 font-light text-xs sm:text-sm md:text-base tracking-wide">
             Dias
           </span>
         </div>
 
         <!-- Separador : -->
         <span
-          class="text-purple-200/75 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
+          class="text-lavenderSoft/70 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
           aria-hidden="true"
         >:</span>
 
@@ -318,14 +380,14 @@
             id="hours"
             class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderSoft/85 font-light text-xs sm:text-sm md:text-base tracking-wide">
             Horas
           </span>
         </div>
 
         <!-- Separador : -->
         <span
-          class="text-purple-200/75 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
+          class="text-lavenderSoft/70 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
           aria-hidden="true"
         >:</span>
 
@@ -335,14 +397,14 @@
             id="minutes"
             class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderSoft/85 font-light text-xs sm:text-sm md:text-base tracking-wide">
             Minutos
           </span>
         </div>
 
         <!-- Separador : -->
         <span
-          class="text-purple-200/75 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
+          class="text-lavenderSoft/70 font-semibold text-3xl sm:text-5xl md:text-[62px] leading-none pt-0.5 sm:pt-1 select-none"
           aria-hidden="true"
         >:</span>
 
@@ -352,7 +414,7 @@
             id="seconds"
             class="tabular-nums moonlight-glow text-moonlight font-semibold text-4xl sm:text-6xl md:text-[74px] leading-none tracking-tight"
           >00</span>
-          <span class="mt-2.5 sm:mt-4 text-lavenderMuted font-light text-xs sm:text-sm md:text-base tracking-wide">
+          <span class="mt-2.5 sm:mt-4 text-lavenderSoft/85 font-light text-xs sm:text-sm md:text-base tracking-wide">
             Segundos
           </span>
         </div>
@@ -363,7 +425,7 @@
         <p
           id="cutePhrase"
           aria-live="polite"
-          class="phrase-transition phrase-visible text-purple-100/85 font-normal text-sm sm:text-base md:text-[17px] leading-relaxed"
+          class="phrase-transition phrase-visible text-purple-100/90 font-normal text-sm sm:text-base md:text-[17px] leading-relaxed"
         >
           O feitiço segue fazendo efeito.
         </p>
@@ -373,10 +435,9 @@
       <button
         id="nextPhraseBtn"
         type="button"
-        class="group inline-flex items-center justify-center gap-2.5 bg-purple-100/95 hover:bg-white active:scale-95 text-[#0d0a16] font-medium text-sm sm:text-[15px] px-10 sm:px-12 py-3.5 rounded-full mystic-pill-shadow transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-300/50 focus:ring-offset-2 focus:ring-offset-obsidian"
+        class="group inline-flex items-center justify-center gap-2.5 bg-purple-100/95 hover:bg-white active:scale-95 text-[#0d0a16] font-medium text-sm sm:text-[15px] px-10 sm:px-12 py-3.5 rounded-full mystic-pill-shadow transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/50 focus:ring-offset-2 focus:ring-offset-obsidian"
       >
         <span>Nova frase</span>
-        <!-- Ícone sutil de lua crescente e estrela -->
         <svg
           class="w-4 h-4 text-purple-700 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-200 fill-current"
           viewBox="0 0 24 24"
@@ -392,46 +453,213 @@
   <!-- Rodapé com Marca d'Água Gigante "ENFEITIÇADO" -->
   <footer class="relative w-full overflow-hidden pt-4 sm:pt-6 z-10 flex flex-col items-center justify-end">
     <div class="bottom-watermark w-full" aria-hidden="true">ENFEITIÇADO</div>
-    <p class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 w-full text-center text-[11px] sm:text-xs font-medium tracking-wide text-lavenderMuted/75 px-4 select-none">
+    <p class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 w-full text-center text-[11px] sm:text-xs font-medium tracking-wide text-lavenderMuted/80 px-4 select-none">
       Feito pensando na minha bruxa • 05/12
     </p>
   </footer>
 
-  <!-- Modal Frosted-Glass Escuro do Recadinho -->
+  <!-- =====================================================
+       MODAL 1: RECADINHO (FROSTED GLASS ESCURO)
+       ===================================================== -->
   <div
     id="noteModal"
     role="dialog"
     aria-modal="true"
-    aria-labelledby="modalTitle"
+    aria-labelledby="noteModalTitle"
     class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-5 bg-black/65 backdrop-blur-md opacity-0"
   >
     <div
       id="noteModalCard"
-      class="modal-card relative w-full max-w-md rounded-3xl bg-[#100d1a]/85 backdrop-blur-xl border border-purple-300/20 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.75)] p-7 sm:p-9 text-center opacity-0 scale-95"
+      class="modal-card relative w-full max-w-md rounded-3xl bg-[#100d1a]/90 backdrop-blur-xl border border-lavenderSoft/20 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.8)] p-7 sm:p-9 text-center opacity-0 scale-95"
     >
-      <!-- Emblema luminoso de lua crescente + brilho no topo -->
-      <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-purple-400/10 border border-purple-300/20 shadow-[0_0_24px_rgba(168,128,255,0.22)] flex items-center justify-center text-purple-200">
+      <!-- Emblema luminoso de lua crescente + estrela no topo -->
+      <div class="w-12 h-12 mx-auto mb-5 rounded-2xl bg-purple-400/10 border border-lavenderSoft/25 shadow-[0_0_24px_rgba(168,128,255,0.22)] flex items-center justify-center text-lavenderSoft">
         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M19.5 14.2A7.5 7.5 0 0 1 9.8 4.5a7.5 7.5 0 1 0 9.7 9.7z" />
           <path d="M17.5 3.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2z" />
         </svg>
       </div>
 
-      <h2 id="modalTitle" class="text-moonlight font-semibold text-lg sm:text-xl tracking-tight mb-3">
+      <h2 id="noteModalTitle" class="text-moonlight font-semibold text-lg sm:text-xl tracking-tight mb-3">
         Um recadinho para a minha bruxa
       </h2>
 
       <p class="text-lavenderMuted text-sm sm:text-[15px] leading-relaxed mb-7">
-        Falta pouco pra gente se ver. Enquanto o dia 05/12 não chega, fiz esse cantinho para contar cada segundo que falta — pelo visto o seu feitiço funcionou mesmo.
+        Falta um tempo pra gente se ver. Enquanto o dia 05/12 não chega, fiz esse cantinho para contar cada segundo que falta — o feitiço segue fazendo efeito.
       </p>
 
       <button
         id="closeNoteBtn"
         type="button"
-        class="bg-white/10 hover:bg-white/15 active:scale-95 border border-purple-300/25 text-moonlight text-sm font-medium px-8 py-2.5 rounded-full shadow-md transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-300/40"
+        class="bg-white/10 hover:bg-white/15 active:scale-95 border border-lavenderSoft/25 text-moonlight text-sm font-medium px-8 py-2.5 rounded-full shadow-md transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/40"
       >
         Fechar
       </button>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       MODAL 2: JOGUINHO (QUEBRA-CABEÇA DESLIZANTE 4x4)
+       ===================================================== -->
+  <div
+    id="gameModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="gameModalTitle"
+    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-black/75 backdrop-blur-lg opacity-0 overflow-y-auto"
+  >
+    <div
+      id="gameModalCard"
+      class="modal-card relative w-full max-w-md my-auto rounded-3xl bg-[#0e0b18]/95 backdrop-blur-xl border border-lavenderSoft/20 shadow-[0_28px_70px_-14px_rgba(0,0,0,0.9)] p-5 sm:p-7 text-center opacity-0 scale-95"
+    >
+      <!-- Cabeçalho do Modal do Jogo -->
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2 text-left">
+          <span class="w-8 h-8 rounded-xl bg-purple-500/15 border border-lavenderSoft/25 flex items-center justify-center text-lavenderSoft">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2L14.2 8.2L20.5 10.5L14.2 12.8L12 19L9.8 12.8L3.5 10.5L9.8 8.2L12 2Z" />
+            </svg>
+          </span>
+          <h2 id="gameModalTitle" class="text-moonlight font-semibold text-base sm:text-lg tracking-tight">
+            Desafio da Bruxa
+          </h2>
+        </div>
+
+        <button
+          id="closeGameBtn"
+          type="button"
+          aria-label="Voltar ao contador"
+          class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 text-lavenderMuted hover:text-moonlight flex items-center justify-center transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/40"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- ÁREA DO QUEBRA-CABEÇA -->
+      <div id="puzzleView">
+        <!-- Mensagem de apoio -->
+        <p class="text-lavenderMuted text-xs sm:text-sm leading-relaxed mb-4 px-1">
+          Ordene os números de 1 a 15 deslizando as peças. Confio em você, minha bruxa — se decifrar, tem uma recompensa te esperando ✨
+        </p>
+
+        <!-- Barra de status (Movimentos + Embaralhar) -->
+        <div class="flex items-center justify-between mb-3.5 px-1">
+          <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-lavenderSoft/90 tabular-nums bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
+            <span>Movimentos:</span>
+            <strong id="moveCounter" class="text-moonlight">0</strong>
+          </span>
+
+          <button
+            id="shuffleBtn"
+            type="button"
+            class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-purple-100 bg-purple-500/15 hover:bg-purple-500/25 active:scale-95 border border-lavenderSoft/30 px-3.5 py-1.5 rounded-full transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/40"
+          >
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="16 3 21 3 21 8" />
+              <line x1="4" y1="20" x2="21" y2="3" />
+              <polyline points="21 16 21 21 16 21" />
+              <line x1="15" y1="15" x2="21" y2="21" />
+              <line x1="4" y1="4" x2="9" y2="9" />
+            </svg>
+            <span>Embaralhar</span>
+          </button>
+        </div>
+
+        <!-- Moldura Tátil estilo Klotski Dark Obsidian -->
+        <div class="klotski-frame rounded-3xl p-3 sm:p-4 border border-lavenderSoft/15 mx-auto max-w-[340px]">
+          <div class="flex items-center justify-between px-1.5 pb-2.5 text-[10px] tracking-[0.22em] uppercase text-lavenderSoft/50 font-semibold select-none">
+            <span>KLOTSKI • 4×4</span>
+            <span>05 ☽ 12</span>
+          </div>
+
+          <!-- Poço interno com a grade 4x4 -->
+          <div
+            id="puzzleBoard"
+            class="klotski-well rounded-2xl p-2 grid grid-cols-4 gap-2 aspect-square"
+            role="grid"
+            aria-label="Tabuleiro de quebra-cabeça deslizante 4 por 4"
+          >
+            <!-- Peças renderizadas via JavaScript -->
+          </div>
+        </div>
+
+        <p class="mt-3.5 text-[11px] text-lavenderMuted/65 select-none">
+          Toque em uma peça (ou use as setas do teclado) para deslizar.
+        </p>
+      </div>
+
+      <!-- ÁREA DE RECOMPENSA (REVELADA AO RESOLVER O 4x4) -->
+      <div id="rewardView" class="hidden reward-animate">
+        <!-- Moldura elegante da foto de recompensa -->
+        <div class="relative rounded-2xl overflow-hidden border border-lavenderSoft/35 bg-[#140f24] shadow-[0_12px_36px_rgba(139,92,246,0.28)] mb-5">
+          <!--
+            FOTO DA RECOMPENSA:
+            Suba sua foto no GitHub na mesma pasta do index.html com o nome exato "recompensa.jpg"
+          -->
+          <img
+            id="rewardImage"
+            src="recompensa.jpg"
+            alt="Sua recompensa"
+            class="w-full max-h-64 object-cover block"
+            onerror="this.classList.add('hidden'); document.getElementById('rewardImgFallback').classList.remove('hidden');"
+          />
+
+          <!-- Aviso discreto exibido apenas se recompensa.jpg ainda não tiver sido enviado -->
+          <div
+            id="rewardImgFallback"
+            class="hidden py-10 px-6 flex flex-col items-center justify-center text-center bg-gradient-to-br from-amethyst/40 via-[#130e24] to-darkPlum/40"
+          >
+            <div class="w-12 h-12 rounded-2xl bg-purple-400/15 border border-lavenderSoft/30 flex items-center justify-center text-lavenderSoft mb-3">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            <p class="text-xs sm:text-sm text-purple-100 font-medium mb-1">
+              Sua foto aparecerá aqui ✨
+            </p>
+            <p class="text-[11px] text-lavenderMuted/80 max-w-xs">
+              Envie o arquivo <code class="text-lavenderSoft bg-white/10 px-1.5 py-0.5 rounded">recompensa.jpg</code> na mesma pasta do <code class="text-lavenderSoft bg-white/10 px-1.5 py-0.5 rounded">index.html</code> no GitHub.
+            </p>
+          </div>
+        </div>
+
+        <!--
+          MENSAGEM DE RECOMPENSA:
+          Edite livremente o título e o texto abaixo como preferir!
+        -->
+        <h3 class="text-moonlight font-semibold text-lg sm:text-xl tracking-tight mb-2">
+          Você conseguiu, minha bruxa! ✨
+        </h3>
+
+        <p class="text-lavenderMuted text-xs sm:text-sm leading-relaxed mb-3 px-1">
+          Sabia que você ia decifrar. Sua recompensa oficial vai ser entregue pessoalmente no dia 05/12 (com direito a muitos beijos e abraços acumulados). Obrigado por não sair da minha cabeça.
+        </p>
+
+        <p id="rewardMovesSummary" class="text-[11px] text-lavenderSoft/75 mb-5 tabular-nums"></p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5">
+          <button
+            id="playAgainBtn"
+            type="button"
+            class="w-full sm:w-auto bg-purple-100/95 hover:bg-white active:scale-95 text-[#0d0a16] text-sm font-medium px-6 py-2.5 rounded-full mystic-pill-shadow transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/50"
+          >
+            Jogar novamente
+          </button>
+
+          <button
+            id="backToCountdownBtn"
+            type="button"
+            class="w-full sm:w-auto bg-white/10 hover:bg-white/15 active:scale-95 border border-lavenderSoft/25 text-moonlight text-sm font-medium px-6 py-2.5 rounded-full transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/40"
+          >
+            Voltar ao contador
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -446,9 +674,7 @@
         const container = document.getElementById('starfield');
         if (!container) return;
 
-        // Quantidade delicada e esparsa para manter o visual ultra-limpo
         const starCount = window.innerWidth < 640 ? 22 : 38;
-
         for (let i = 0; i < starCount; i++) {
           const star = document.createElement('span');
           star.className = 'ambient-star';
@@ -466,29 +692,8 @@
       initStarfield();
 
       // =========================================================
-      // 1. CONFIGURAÇÃO DA DATA-ALVO (05/12/2026 às 00:00:00)
+      // AUXILIAR DE PARTÍCULAS MÍSTICAS (CORAÇÕES, BRILHOS E LUAS)
       // =========================================================
-      // Mês em JavaScript é 0-indexado: 11 = Dezembro
-      const TARGET_DATE = new Date(2026, 11, 5, 0, 0, 0);
-
-      const daysEl = document.getElementById('days');
-      const hoursEl = document.getElementById('hours');
-      const minutesEl = document.getElementById('minutes');
-      const secondsEl = document.getElementById('seconds');
-      const mainHeadingEl = document.getElementById('mainHeading');
-
-      let celebrationStarted = false;
-
-      /**
-       * Formata um número com dois dígitos (ex: 4 -> "04")
-       */
-      function padTwo(value) {
-        return String(Math.max(0, value)).padStart(2, '0');
-      }
-
-      /**
-       * Retorna o SVG de uma partícula mística (coração, brilho de 4 pontas ou lua crescente)
-       */
       function getMysticSvg(type, size, color) {
         if (type === 'moon') {
           return `
@@ -512,14 +717,63 @@
       }
 
       /**
-       * Inicia uma celebração suave de luas, brilhos e corações quando o grande dia chega
+       * Dispara uma explosão suave de partículas celebratórias pela tela
        */
-      function startCelebration() {
+      function burstCelebrationParticles(amount = 18) {
+        const types = ['heart', 'sparkle', 'moon'];
+        const colors = ['#c4b5fd', '#e879f9', '#f472b6', '#f8fafc', '#a78bfa'];
+
+        for (let i = 0; i < amount; i++) {
+          setTimeout(() => {
+            const particle = document.createElement('span');
+            particle.className = 'floating-mystic';
+            particle.setAttribute('aria-hidden', 'true');
+
+            const type = types[i % types.length];
+            const size = 12 + Math.random() * 10;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const startX = window.innerWidth * (0.15 + Math.random() * 0.7);
+            const startY = window.innerHeight * (0.35 + Math.random() * 0.35);
+            const driftX = (Math.random() - 0.5) * 140;
+            const rot = (Math.random() - 0.5) * 60;
+            const dur = 1.4 + Math.random() * 0.8;
+
+            particle.style.left = `${startX}px`;
+            particle.style.top = `${startY}px`;
+            particle.style.setProperty('--drift-x', `${driftX}px`);
+            particle.style.setProperty('--rot', `${rot}deg`);
+            particle.style.setProperty('--dur', `${dur}s`);
+            particle.innerHTML = getMysticSvg(type, size, color);
+
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), dur * 1000 + 150);
+          }, i * 55);
+        }
+      }
+
+      // =========================================================
+      // 1. CONFIGURAÇÃO DA DATA-ALVO (05/12/2026 às 00:00:00)
+      // =========================================================
+      const TARGET_DATE = new Date(2026, 11, 5, 0, 0, 0);
+
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      const mainHeadingEl = document.getElementById('mainHeading');
+
+      let celebrationStarted = false;
+
+      function padTwo(value) {
+        return String(Math.max(0, value)).padStart(2, '0');
+      }
+
+      function startCountdownCelebration() {
         if (celebrationStarted) return;
         celebrationStarted = true;
 
         const types = ['moon', 'sparkle', 'heart'];
-        const colors = ['rgba(216, 180, 254, 0.8)', 'rgba(244, 114, 182, 0.78)', 'rgba(244, 241, 255, 0.82)'];
+        const colors = ['rgba(196, 181, 253, 0.82)', 'rgba(244, 114, 182, 0.78)', 'rgba(248, 250, 252, 0.82)'];
 
         const spawnAmbientParticle = () => {
           const el = document.createElement('span');
@@ -536,9 +790,7 @@
           el.style.setProperty('--sway', `${(Math.random() - 0.5) * 95}px`);
           document.body.appendChild(el);
 
-          setTimeout(() => {
-            el.remove();
-          }, 12000);
+          setTimeout(() => el.remove(), 12000);
         };
 
         for (let i = 0; i < 7; i++) {
@@ -547,9 +799,6 @@
         setInterval(spawnAmbientParticle, 1050);
       }
 
-      /**
-       * Atualiza o contador a cada segundo
-       */
       function updateCountdown() {
         try {
           const now = new Date();
@@ -561,7 +810,7 @@
             minutesEl.textContent = '00';
             secondsEl.textContent = '00';
             mainHeadingEl.innerHTML = 'CHEGOU O GRANDE DIA!';
-            startCelebration();
+            startCountdownCelebration();
             return;
           }
 
@@ -580,30 +829,29 @@
         }
       }
 
-      // Inicializa imediatamente e atualiza a cada 1 segundo
       updateCountdown();
       setInterval(updateCountdown, 1000);
 
       // =========================================================
-      // 2. FRASES CARINHOSAS ROTATIVAS & PARTÍCULAS MÍSTICAS
+      // 2. FRASES CARINHOSAS ROTATIVAS & PARTÍCULAS NO BOTÃO
       // =========================================================
       const PHRASES = [
         'O feitiço segue fazendo efeito.',
         'Você não sai da minha cabeça nem por um segundo.',
-        'Que feitiço você jogou em mim que eu só penso no dia 05/12?',
         'Contando os dias, as horas e os minutos para te ver. Literalmente kkkkk',
-        'Enfeitiçado por você e sem a menor vontade de quebrar o feitiço.',
         'A saudade já está grande demais para caber nesse relógio.',
         'O dia 05/12 nunca demorou tanto para chegar.',
-        'Minha bruxa favorita, o tempo anda devagar demais longe de você.',
         'Cada segundo a menos aqui é um passo mais perto de você.',
         'Só queria poder adiantar o tempo até o nosso encontro.',
+        'Penso em você o tempo todo — e ainda acho pouco.',
         'Mal posso esperar para trocar essa tela por um beijo seu.',
         'Se saudade encurtasse o tempo, já estaríamos juntos.',
         'Você é o meu pensamento favorito do dia.',
         'Meu relógio parece estar em câmera lenta esperando por você.',
         'Entre um compromisso e outro, é em você que eu penso.',
         'Logo menos a contagem zera, pelo amor de Deus',
+        'Acho que você jogou algum feitiço em mim, porque só penso em você.',
+        'Minha bruxa favorita continua morando na minha cabeça.',
       ];
 
       const phraseEl = document.getElementById('cutePhrase');
@@ -613,9 +861,6 @@
       let isTransitioning = false;
       let autoRotateTimer = null;
 
-      /**
-       * Troca para a próxima frase com efeito suave de fade-out / fade-in
-       */
       function showNextPhrase() {
         if (isTransitioning) return;
         isTransitioning = true;
@@ -636,22 +881,16 @@
         }, 320);
       }
 
-      /**
-       * Reinicia o temporizador automático de 6 segundos
-       */
       function resetAutoRotate() {
         if (autoRotateTimer) clearInterval(autoRotateTimer);
         autoRotateTimer = setInterval(showNextPhrase, 6000);
       }
 
-      /**
-       * Cria de 4 a 6 partículas místicas (corações, brilhos e luas) subindo a partir do botão
-       */
       function spawnButtonParticles(buttonEl) {
         const rect = buttonEl.getBoundingClientRect();
-        const count = 4 + Math.floor(Math.random() * 3); // 4 a 6 partículas
+        const count = 4 + Math.floor(Math.random() * 3);
         const types = ['heart', 'sparkle', 'moon'];
-        const colors = ['#c084fc', '#e879f9', '#f472b6', '#f4f1ff', '#a78bfa'];
+        const colors = ['#c4b5fd', '#e879f9', '#f472b6', '#f8fafc', '#a78bfa'];
 
         for (let i = 0; i < count; i++) {
           const particle = document.createElement('span');
@@ -672,72 +911,289 @@
           particle.style.setProperty('--drift-x', `${driftX}px`);
           particle.style.setProperty('--rot', `${rot}deg`);
           particle.style.setProperty('--dur', `${dur}s`);
-
           particle.innerHTML = getMysticSvg(type, size, color);
 
           document.body.appendChild(particle);
-
-          setTimeout(() => {
-            particle.remove();
-          }, dur * 1000 + 120);
+          setTimeout(() => particle.remove(), dur * 1000 + 120);
         }
       }
 
-      // Evento do botão "Nova frase"
       nextPhraseBtn.addEventListener('click', () => {
         spawnButtonParticles(nextPhraseBtn);
         showNextPhrase();
         resetAutoRotate();
       });
 
-      // Inicia a rotação automática a cada 6 segundos
       resetAutoRotate();
 
       // =========================================================
-      // 3. MODAL DE RECADINHO (FROSTED GLASS ESCURO)
+      // 3. CONTROLE GENÉRICO DE MODAIS (RECADINHO & JOGUINHO)
       // =========================================================
+      function openModalEl(backdrop, card) {
+        backdrop.classList.remove('hidden');
+        backdrop.classList.add('flex');
+        requestAnimationFrame(() => {
+          backdrop.classList.remove('opacity-0');
+          backdrop.classList.add('opacity-100');
+          card.classList.remove('opacity-0', 'scale-95');
+          card.classList.add('opacity-100', 'scale-100');
+        });
+      }
+
+      function closeModalEl(backdrop, card) {
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        card.classList.remove('opacity-100', 'scale-100');
+        card.classList.add('opacity-0', 'scale-95');
+
+        setTimeout(() => {
+          backdrop.classList.add('hidden');
+          backdrop.classList.remove('flex');
+        }, 260);
+      }
+
+      // Modal Recadinho
       const openNoteBtn = document.getElementById('openNoteBtn');
       const closeNoteBtn = document.getElementById('closeNoteBtn');
       const noteModal = document.getElementById('noteModal');
       const noteModalCard = document.getElementById('noteModalCard');
 
-      function openModal() {
-        noteModal.classList.remove('hidden');
-        noteModal.classList.add('flex');
-        requestAnimationFrame(() => {
-          noteModal.classList.remove('opacity-0');
-          noteModal.classList.add('opacity-100');
-          noteModalCard.classList.remove('opacity-0', 'scale-95');
-          noteModalCard.classList.add('opacity-100', 'scale-100');
+      openNoteBtn.addEventListener('click', () => openModalEl(noteModal, noteModalCard));
+      closeNoteBtn.addEventListener('click', () => closeModalEl(noteModal, noteModalCard));
+      noteModal.addEventListener('click', (e) => {
+        if (e.target === noteModal) closeModalEl(noteModal, noteModalCard);
+      });
+
+      // =========================================================
+      // 4. QUEBRA-CABEÇA DESLIZANTE 4x4 (15-PUZZLE SOLUCIONÁVEL)
+      // =========================================================
+      const GRID_SIZE = 4;
+      const SOLVED_STATE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
+
+      const openGameBtn = document.getElementById('openGameBtn');
+      const closeGameBtn = document.getElementById('closeGameBtn');
+      const gameModal = document.getElementById('gameModal');
+      const gameModalCard = document.getElementById('gameModalCard');
+
+      const puzzleView = document.getElementById('puzzleView');
+      const rewardView = document.getElementById('rewardView');
+      const puzzleBoard = document.getElementById('puzzleBoard');
+      const moveCounterEl = document.getElementById('moveCounter');
+      const shuffleBtn = document.getElementById('shuffleBtn');
+      const playAgainBtn = document.getElementById('playAgainBtn');
+      const backToCountdownBtn = document.getElementById('backToCountdownBtn');
+      const rewardMovesSummary = document.getElementById('rewardMovesSummary');
+
+      let board = [...SOLVED_STATE];
+      let moves = 0;
+      let isSolved = false;
+      let gameInitialized = false;
+
+      /**
+       * Verifica se o tabuleiro atual está exatamente igual ao estado resolvido
+       */
+      function checkSolved(arr) {
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] !== SOLVED_STATE[i]) return false;
+        }
+        return true;
+      }
+
+      /**
+       * Embaralha executando 140 movimentos aleatórios válidos a partir do estado resolvido.
+       * Isso garante matematicamente que o quebra-cabeça 4x4 seja 100% solucionável.
+       */
+      function createSolvableShuffle(steps = 140) {
+        const arr = [...SOLVED_STATE];
+        let emptyIdx = arr.indexOf(0);
+        let prevEmptyIdx = -1;
+
+        for (let step = 0; step < steps; step++) {
+          const row = Math.floor(emptyIdx / GRID_SIZE);
+          const col = emptyIdx % GRID_SIZE;
+          const neighbors = [];
+
+          if (row > 0) neighbors.push(emptyIdx - GRID_SIZE);
+          if (row < GRID_SIZE - 1) neighbors.push(emptyIdx + GRID_SIZE);
+          if (col > 0) neighbors.push(emptyIdx - 1);
+          if (col < GRID_SIZE - 1) neighbors.push(emptyIdx + 1);
+
+          // Evita desfazer imediatamente o movimento anterior
+          const validNeighbors = neighbors.filter((idx) => idx !== prevEmptyIdx);
+          const chosen = validNeighbors[Math.floor(Math.random() * validNeighbors.length)];
+
+          arr[emptyIdx] = arr[chosen];
+          arr[chosen] = 0;
+          prevEmptyIdx = emptyIdx;
+          emptyIdx = chosen;
+        }
+
+        // Garante que não terminou por acaso já resolvido
+        if (checkSolved(arr)) {
+          return createSolvableShuffle(steps + 15);
+        }
+        return arr;
+      }
+
+      /**
+       * Reinicia e embaralha uma nova partida
+       */
+      function resetGame() {
+        board = createSolvableShuffle(140);
+        moves = 0;
+        isSolved = false;
+        moveCounterEl.textContent = '0';
+        rewardView.classList.add('hidden');
+        puzzleView.classList.remove('hidden');
+        renderBoard();
+      }
+
+      /**
+       * Exibe a tela de recompensa ao completar o quebra-cabeça
+       */
+      function triggerWin() {
+        isSolved = true;
+        rewardMovesSummary.textContent = `Resolvido em ${moves} ${moves === 1 ? 'movimento' : 'movimentos'}`;
+        burstCelebrationParticles(22);
+
+        setTimeout(() => {
+          puzzleView.classList.add('hidden');
+          rewardView.classList.remove('hidden');
+        }, 320);
+      }
+
+      /**
+       * Desliza uma peça (ou toda a fileira/coluna até o espaço vazio)
+       */
+      function slideAtIndex(tileIdx) {
+        if (isSolved) return;
+
+        const emptyIdx = board.indexOf(0);
+        if (tileIdx === emptyIdx) return;
+
+        const tileRow = Math.floor(tileIdx / GRID_SIZE);
+        const tileCol = tileIdx % GRID_SIZE;
+        const emptyRow = Math.floor(emptyIdx / GRID_SIZE);
+        const emptyCol = emptyIdx % GRID_SIZE;
+
+        let moved = false;
+
+        // Mesma linha: desliza todas as peças entre tileCol e emptyCol em direção ao espaço vazio
+        if (tileRow === emptyRow) {
+          const step = tileCol < emptyCol ? -1 : 1;
+          for (let c = emptyCol; c !== tileCol; c += step) {
+            const target = tileRow * GRID_SIZE + c;
+            const source = tileRow * GRID_SIZE + (c + step);
+            board[target] = board[source];
+          }
+          board[tileIdx] = 0;
+          moved = true;
+        }
+        // Mesma coluna: desliza todas as peças entre tileRow e emptyRow em direção ao espaço vazio
+        else if (tileCol === emptyCol) {
+          const step = tileRow < emptyRow ? -1 : 1;
+          for (let r = emptyRow; r !== tileRow; r += step) {
+            const target = r * GRID_SIZE + tileCol;
+            const source = (r + step) * GRID_SIZE + tileCol;
+            board[target] = board[source];
+          }
+          board[tileIdx] = 0;
+          moved = true;
+        }
+
+        if (moved) {
+          moves += 1;
+          moveCounterEl.textContent = String(moves);
+          renderBoard();
+
+          if (checkSolved(board)) {
+            triggerWin();
+          }
+        }
+      }
+
+      /**
+       * Renderiza visualmente o tabuleiro 4x4
+       */
+      function renderBoard() {
+        puzzleBoard.innerHTML = '';
+
+        board.forEach((value, idx) => {
+          if (value === 0) {
+            const emptySlot = document.createElement('div');
+            emptySlot.className = 'puzzle-empty rounded-xl';
+            emptySlot.setAttribute('aria-hidden', 'true');
+            puzzleBoard.appendChild(emptySlot);
+            return;
+          }
+
+          const isCorrectPos = value === idx + 1;
+          const tileBtn = document.createElement('button');
+          tileBtn.type = 'button';
+          tileBtn.textContent = String(value);
+          tileBtn.setAttribute('aria-label', `Peça número ${value}`);
+          tileBtn.className =
+            'puzzle-tile rounded-xl flex items-center justify-center font-semibold text-lg sm:text-xl tabular-nums cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/60 ' +
+            (isCorrectPos
+              ? 'puzzle-tile-correct text-lavenderSoft'
+              : 'text-moonlight/95');
+
+          tileBtn.addEventListener('click', () => slideAtIndex(idx));
+          puzzleBoard.appendChild(tileBtn);
         });
       }
 
-      function closeModal() {
-        noteModal.classList.remove('opacity-100');
-        noteModal.classList.add('opacity-0');
-        noteModalCard.classList.remove('opacity-100', 'scale-100');
-        noteModalCard.classList.add('opacity-0', 'scale-95');
-
-        setTimeout(() => {
-          noteModal.classList.add('hidden');
-          noteModal.classList.remove('flex');
-        }, 260);
-      }
-
-      openNoteBtn.addEventListener('click', openModal);
-      closeNoteBtn.addEventListener('click', closeModal);
-
-      // Fecha ao clicar fora do card
-      noteModal.addEventListener('click', (event) => {
-        if (event.target === noteModal) {
-          closeModal();
+      // Abertura e fechamento do modal do jogo
+      openGameBtn.addEventListener('click', () => {
+        if (!gameInitialized) {
+          resetGame();
+          gameInitialized = true;
         }
+        openModalEl(gameModal, gameModalCard);
       });
 
-      // Fecha com a tecla Escape
+      const closeGameModal = () => closeModalEl(gameModal, gameModalCard);
+      closeGameBtn.addEventListener('click', closeGameModal);
+      backToCountdownBtn.addEventListener('click', closeGameModal);
+      gameModal.addEventListener('click', (e) => {
+        if (e.target === gameModal) closeGameModal();
+      });
+
+      shuffleBtn.addEventListener('click', resetGame);
+      playAgainBtn.addEventListener('click', resetGame);
+
+      // Suporte a teclado: Escape fecha modais e Setas movem peças quando o joguinho está aberto
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && !noteModal.classList.contains('hidden')) {
-          closeModal();
+        const isNoteOpen = !noteModal.classList.contains('hidden');
+        const isGameOpen = !gameModal.classList.contains('hidden');
+
+        if (event.key === 'Escape') {
+          if (isNoteOpen) closeModalEl(noteModal, noteModalCard);
+          if (isGameOpen) closeGameModal();
+          return;
+        }
+
+        if (!isGameOpen || isSolved) return;
+
+        const emptyIdx = board.indexOf(0);
+        const emptyRow = Math.floor(emptyIdx / GRID_SIZE);
+        const emptyCol = emptyIdx % GRID_SIZE;
+        let targetIdx = -1;
+
+        // A direção da seta indica para onde a peça vizinha desliza
+        if (event.key === 'ArrowUp' && emptyRow < GRID_SIZE - 1) {
+          targetIdx = emptyIdx + GRID_SIZE;
+        } else if (event.key === 'ArrowDown' && emptyRow > 0) {
+          targetIdx = emptyIdx - GRID_SIZE;
+        } else if (event.key === 'ArrowLeft' && emptyCol < GRID_SIZE - 1) {
+          targetIdx = emptyIdx + 1;
+        } else if (event.key === 'ArrowRight' && emptyCol > 0) {
+          targetIdx = emptyIdx - 1;
+        }
+
+        if (targetIdx !== -1) {
+          event.preventDefault();
+          slideAtIndex(targetIdx);
         }
       });
     })();
