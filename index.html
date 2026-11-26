@@ -291,7 +291,7 @@
   </style>
 
   <!-- GoatCounter: substitua SEU-CODIGO pelo código da sua conta em goatcounter.com -->
-  <script data-goatcounter="https://kunz.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://SEU-CODIGO.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body class="min-h-[100dvh] flex flex-col justify-between relative font-sans selection:bg-purple-400/25 selection:text-moonlight">
 
@@ -541,7 +541,7 @@
       <div id="puzzleView">
         <!-- Mensagem de apoio -->
         <p class="text-lavenderMuted text-xs sm:text-sm leading-relaxed mb-4 px-1">
-          Ordene os números de 1 a 15 deslizando as peças. Confio em você, minha bruxa — se decifrar, tem uma lembrança te esperando ✨
+          Organize os números de 1 a 8. Se você conseguir decifrar esse enigma, tem uma recompensa especial te esperando...
         </p>
 
         <!-- Barra de status (Movimentos + Embaralhar) -->
@@ -568,18 +568,18 @@
         </div>
 
         <!-- Moldura Tátil estilo Klotski Dark Obsidian -->
-        <div class="klotski-frame rounded-3xl p-3 sm:p-4 border border-lavenderSoft/15 mx-auto max-w-[340px]">
+        <div class="klotski-frame rounded-3xl p-3 sm:p-4 border border-lavenderSoft/15 mx-auto max-w-[320px]">
           <div class="flex items-center justify-between px-1.5 pb-2.5 text-[10px] tracking-[0.22em] uppercase text-lavenderSoft/50 font-semibold select-none">
-            <span>KLOTSKI • 4×4</span>
+            <span>KLOTSKI • 3×3</span>
             <span>05 ☽ 12</span>
           </div>
 
-          <!-- Poço interno com a grade 4x4 -->
+          <!-- Poço interno com a grade 3x3 -->
           <div
             id="puzzleBoard"
-            class="klotski-well rounded-2xl p-2 grid grid-cols-4 gap-2 aspect-square"
+            class="klotski-well rounded-2xl p-2.5 grid grid-cols-3 gap-2.5 aspect-square"
             role="grid"
-            aria-label="Tabuleiro de quebra-cabeça deslizante 4 por 4"
+            aria-label="Tabuleiro de quebra-cabeça deslizante 3 por 3"
           >
             <!-- Peças renderizadas via JavaScript -->
           </div>
@@ -632,11 +632,11 @@
           Edite livremente o título e o texto abaixo como preferir!
         -->
         <h3 class="text-moonlight font-semibold text-lg sm:text-xl tracking-tight mb-2">
-          Você conseguiu, minha bruxa! ✨
+          Feitiço decifrado! ✨
         </h3>
 
         <p class="text-lavenderMuted text-xs sm:text-sm leading-relaxed mb-3 px-1">
-          Sabia que você ia decifrar. Sua recompensa oficial vai ser entregue pessoalmente no dia 05/12 (com direito a muitos beijos e abraços acumulados), mas espero que isso lhe ajude a me manter na sua mente. Saiba que você não saí da minha cabeça.
+          Sabia que você ia decifrar. Sua recompensa oficial vai ser entregue pessoalmente no dia 05/12 (com direito a muitos beijos e abraços acumulados). Obrigado por não sair da minha cabeça.
         </p>
 
         <p id="rewardMovesSummary" class="text-[11px] text-lavenderSoft/75 mb-5 tabular-nums"></p>
@@ -655,7 +655,7 @@
             type="button"
             class="w-full sm:w-auto bg-white/10 hover:bg-white/15 active:scale-95 border border-lavenderSoft/25 text-moonlight text-sm font-medium px-6 py-2.5 rounded-full transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/40"
           >
-            Voltar ao contador
+            Fechar
           </button>
         </div>
       </div>
@@ -850,8 +850,8 @@
         'Meu relógio parece estar em câmera lenta esperando por você.',
         'Entre um compromisso e outro, é em você que eu penso.',
         'Logo menos a contagem zera, pelo amor de Deus',
-        'Acho que você jogou algum feitiço em mim, porque só penso em você.',
-        'Minha bruxa favorita continua morando na minha cabeça.',
+        'Se isso for feitiço, não quero que passe nunca.',
+        'Minha bruxa favorita morando nos meus pensamentos.',
       ];
 
       const phraseEl = document.getElementById('cutePhrase');
@@ -927,48 +927,10 @@
       resetAutoRotate();
 
       // =========================================================
-      // 3. CONTROLE GENÉRICO DE MODAIS (RECADINHO & JOGUINHO)
+      // 4. QUEBRA-CABEÇA DESLIZANTE 3x3 (8-PUZZLE SOLUCIONÁVEL)
       // =========================================================
-      function openModalEl(backdrop, card) {
-        backdrop.classList.remove('hidden');
-        backdrop.classList.add('flex');
-        requestAnimationFrame(() => {
-          backdrop.classList.remove('opacity-0');
-          backdrop.classList.add('opacity-100');
-          card.classList.remove('opacity-0', 'scale-95');
-          card.classList.add('opacity-100', 'scale-100');
-        });
-      }
-
-      function closeModalEl(backdrop, card) {
-        backdrop.classList.remove('opacity-100');
-        backdrop.classList.add('opacity-0');
-        card.classList.remove('opacity-100', 'scale-100');
-        card.classList.add('opacity-0', 'scale-95');
-
-        setTimeout(() => {
-          backdrop.classList.add('hidden');
-          backdrop.classList.remove('flex');
-        }, 260);
-      }
-
-      // Modal Recadinho
-      const openNoteBtn = document.getElementById('openNoteBtn');
-      const closeNoteBtn = document.getElementById('closeNoteBtn');
-      const noteModal = document.getElementById('noteModal');
-      const noteModalCard = document.getElementById('noteModalCard');
-
-      openNoteBtn.addEventListener('click', () => openModalEl(noteModal, noteModalCard));
-      closeNoteBtn.addEventListener('click', () => closeModalEl(noteModal, noteModalCard));
-      noteModal.addEventListener('click', (e) => {
-        if (e.target === noteModal) closeModalEl(noteModal, noteModalCard);
-      });
-
-      // =========================================================
-      // 4. QUEBRA-CABEÇA DESLIZANTE 4x4 (15-PUZZLE SOLUCIONÁVEL)
-      // =========================================================
-      const GRID_SIZE = 4;
-      const SOLVED_STATE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
+      const GRID_SIZE = 3;
+      const SOLVED_STATE = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 
       const openGameBtn = document.getElementById('openGameBtn');
       const closeGameBtn = document.getElementById('closeGameBtn');
@@ -1000,10 +962,10 @@
       }
 
       /**
-       * Embaralha executando 140 movimentos aleatórios válidos a partir do estado resolvido.
-       * Isso garante matematicamente que o quebra-cabeça 4x4 seja 100% solucionável.
+       * Embaralha executando 50 movimentos aleatórios válidos a partir do estado resolvido.
+       * Isso garante matematicamente que o quebra-cabeça 3x3 seja 100% solucionável.
        */
-      function createSolvableShuffle(steps = 140) {
+      function createSolvableShuffle(steps = 50) {
         const arr = [...SOLVED_STATE];
         let emptyIdx = arr.indexOf(0);
         let prevEmptyIdx = -1;
@@ -1039,7 +1001,7 @@
        * Reinicia e embaralha uma nova partida
        */
       function resetGame() {
-        board = createSolvableShuffle(140);
+        board = createSolvableShuffle(50);
         moves = 0;
         isSolved = false;
         moveCounterEl.textContent = '0';
@@ -1133,7 +1095,7 @@
           tileBtn.textContent = String(value);
           tileBtn.setAttribute('aria-label', `Peça número ${value}`);
           tileBtn.className =
-            'puzzle-tile rounded-xl flex items-center justify-center font-semibold text-lg sm:text-xl tabular-nums cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/60 ' +
+            'puzzle-tile rounded-xl flex items-center justify-center font-semibold text-2xl sm:text-3xl tabular-nums cursor-pointer focus:outline-none focus:ring-2 focus:ring-lavenderSoft/60 ' +
             (isCorrectPos
               ? 'puzzle-tile-correct text-lavenderSoft'
               : 'text-moonlight/95');
