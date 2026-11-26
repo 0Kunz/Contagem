@@ -54,6 +54,7 @@
       position: fixed;
       inset: 0;
       z-index: -3;
+      pointer-events: none;
       background-color: #06060a;
       background-image:
         radial-gradient(at 14% 24%, rgba(59, 29, 106, 0.62) 0px, transparent 56%),
@@ -222,7 +223,7 @@
     }
 
     /* =====================================================
-       ESTILO TÁTIL DO QUEBRA-CABEÇA 4x4 (KLOTSKI OBSIDIANA)
+       ESTILO TÁTIL DO QUEBRA-CABEÇA 3x3 (KLOTSKI OBSIDIANA)
        ===================================================== */
     .klotski-frame {
       background: linear-gradient(145deg, #161124 0%, #0b0912 100%);
@@ -300,8 +301,8 @@
   <div class="aurora-glow" aria-hidden="true"></div>
   <div id="starfield" aria-hidden="true"></div>
 
-  <!-- Barra de navegação superior minimalista -->
-  <header class="w-full bg-black/25 backdrop-blur-md border-b border-white/10 z-20">
+  <!-- Barra de navegação superior minimalista (z-30 para nunca ser bloqueada) -->
+  <header class="relative w-full bg-black/25 backdrop-blur-md border-b border-white/10 z-30">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-10 h-16 sm:h-[72px] flex items-center justify-between gap-2">
       <!-- Marca esquerda: 05 + Lua Crescente + 12 -->
       <div class="flex items-center gap-2 text-moonlight font-extrabold tracking-[0.14em] text-sm sm:text-base uppercase select-none shrink-0">
@@ -499,7 +500,7 @@
   </div>
 
   <!-- =====================================================
-       MODAL 2: JOGUINHO (QUEBRA-CABEÇA DESLIZANTE 4x4)
+       MODAL 2: JOGUINHO (QUEBRA-CABEÇA DESLIZANTE 3x3)
        ===================================================== -->
   <div
     id="gameModal"
@@ -541,7 +542,7 @@
       <div id="puzzleView">
         <!-- Mensagem de apoio -->
         <p class="text-lavenderMuted text-xs sm:text-sm leading-relaxed mb-4 px-1">
-          Organize os números de 1 a 8. Se você conseguir decifrar esse enigma, tem uma recompensa especial te esperando...
+          Se você decifrar o feitiço e ordenar as peças de 1 a 8, tem uma recompensa te esperando ✨
         </p>
 
         <!-- Barra de status (Movimentos + Embaralhar) -->
@@ -590,7 +591,7 @@
         </p>
       </div>
 
-      <!-- ÁREA DE RECOMPENSA (REVELADA AO RESOLVER O 4x4) -->
+      <!-- ÁREA DE RECOMPENSA (REVELADA AO RESOLVER O 3x3) -->
       <div id="rewardView" class="hidden reward-animate">
         <!-- Moldura elegante da foto de recompensa -->
         <div class="relative rounded-2xl overflow-hidden border border-lavenderSoft/35 bg-[#140f24] shadow-[0_12px_36px_rgba(139,92,246,0.28)] mb-5">
@@ -627,10 +628,7 @@
           </div>
         </div>
 
-        <!--
-          MENSAGEM DE RECOMPENSA:
-          Edite livremente o título e o texto abaixo como preferir!
-        -->
+        <!-- MENSAGEM DE RECOMPENSA -->
         <h3 class="text-moonlight font-semibold text-lg sm:text-xl tracking-tight mb-2">
           Feitiço decifrado! ✨
         </h3>
@@ -664,7 +662,7 @@
   </div>
 
   <script>
-    (function () {
+    document.addEventListener('DOMContentLoaded', () => {
       'use strict';
 
       // =========================================================
@@ -692,6 +690,34 @@
       initStarfield();
 
       // =========================================================
+      // AUXILIARES DE MODAL (ABERTURA E FECHAMENTO COM ANIMAÇÃO)
+      // =========================================================
+      function openModalEl(backdrop, card) {
+        if (!backdrop || !card) return;
+        backdrop.classList.remove('hidden');
+        backdrop.classList.add('flex');
+        requestAnimationFrame(() => {
+          backdrop.classList.remove('opacity-0');
+          backdrop.classList.add('opacity-100');
+          card.classList.remove('opacity-0', 'scale-95');
+          card.classList.add('opacity-100', 'scale-100');
+        });
+      }
+
+      function closeModalEl(backdrop, card) {
+        if (!backdrop || !card) return;
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        card.classList.remove('opacity-100', 'scale-100');
+        card.classList.add('opacity-0', 'scale-95');
+
+        setTimeout(() => {
+          backdrop.classList.add('hidden');
+          backdrop.classList.remove('flex');
+        }, 260);
+      }
+
+      // =========================================================
       // AUXILIAR DE PARTÍCULAS MÍSTICAS (CORAÇÕES, BRILHOS E LUAS)
       // =========================================================
       function getMysticSvg(type, size, color) {
@@ -716,9 +742,6 @@
         `;
       }
 
-      /**
-       * Dispara uma explosão suave de partículas celebratórias pela tela
-       */
       function burstCelebrationParticles(amount = 18) {
         const types = ['heart', 'sparkle', 'moon'];
         const colors = ['#c4b5fd', '#e879f9', '#f472b6', '#f8fafc', '#a78bfa'];
@@ -927,6 +950,22 @@
       resetAutoRotate();
 
       // =========================================================
+      // 3. MODAL DE RECADINHO (FROSTED GLASS ESCURO)
+      // =========================================================
+      const openNoteBtn = document.getElementById('openNoteBtn');
+      const closeNoteBtn = document.getElementById('closeNoteBtn');
+      const noteModal = document.getElementById('noteModal');
+      const noteModalCard = document.getElementById('noteModalCard');
+
+      openNoteBtn.addEventListener('click', () => openModalEl(noteModal, noteModalCard));
+      closeNoteBtn.addEventListener('click', () => closeModalEl(noteModal, noteModalCard));
+      noteModal.addEventListener('click', (event) => {
+        if (event.target === noteModal) {
+          closeModalEl(noteModal, noteModalCard);
+        }
+      });
+
+      // =========================================================
       // 4. QUEBRA-CABEÇA DESLIZANTE 3x3 (8-PUZZLE SOLUCIONÁVEL)
       // =========================================================
       const GRID_SIZE = 3;
@@ -951,9 +990,6 @@
       let isSolved = false;
       let gameInitialized = false;
 
-      /**
-       * Verifica se o tabuleiro atual está exatamente igual ao estado resolvido
-       */
       function checkSolved(arr) {
         for (let i = 0; i < arr.length; i++) {
           if (arr[i] !== SOLVED_STATE[i]) return false;
@@ -963,7 +999,7 @@
 
       /**
        * Embaralha executando 50 movimentos aleatórios válidos a partir do estado resolvido.
-       * Isso garante matematicamente que o quebra-cabeça 3x3 seja 100% solucionável.
+       * Garante matematicamente que o quebra-cabeça 3x3 seja 100% solucionável.
        */
       function createSolvableShuffle(steps = 50) {
         const arr = [...SOLVED_STATE];
@@ -980,7 +1016,6 @@
           if (col > 0) neighbors.push(emptyIdx - 1);
           if (col < GRID_SIZE - 1) neighbors.push(emptyIdx + 1);
 
-          // Evita desfazer imediatamente o movimento anterior
           const validNeighbors = neighbors.filter((idx) => idx !== prevEmptyIdx);
           const chosen = validNeighbors[Math.floor(Math.random() * validNeighbors.length)];
 
@@ -990,16 +1025,12 @@
           emptyIdx = chosen;
         }
 
-        // Garante que não terminou por acaso já resolvido
         if (checkSolved(arr)) {
           return createSolvableShuffle(steps + 15);
         }
         return arr;
       }
 
-      /**
-       * Reinicia e embaralha uma nova partida
-       */
       function resetGame() {
         board = createSolvableShuffle(50);
         moves = 0;
@@ -1010,9 +1041,6 @@
         renderBoard();
       }
 
-      /**
-       * Exibe a tela de recompensa ao completar o quebra-cabeça
-       */
       function triggerWin() {
         isSolved = true;
         rewardMovesSummary.textContent = `Resolvido em ${moves} ${moves === 1 ? 'movimento' : 'movimentos'}`;
@@ -1024,9 +1052,6 @@
         }, 320);
       }
 
-      /**
-       * Desliza uma peça (ou toda a fileira/coluna até o espaço vazio)
-       */
       function slideAtIndex(tileIdx) {
         if (isSolved) return;
 
@@ -1040,7 +1065,6 @@
 
         let moved = false;
 
-        // Mesma linha: desliza todas as peças entre tileCol e emptyCol em direção ao espaço vazio
         if (tileRow === emptyRow) {
           const step = tileCol < emptyCol ? -1 : 1;
           for (let c = emptyCol; c !== tileCol; c += step) {
@@ -1050,9 +1074,7 @@
           }
           board[tileIdx] = 0;
           moved = true;
-        }
-        // Mesma coluna: desliza todas as peças entre tileRow e emptyRow em direção ao espaço vazio
-        else if (tileCol === emptyCol) {
+        } else if (tileCol === emptyCol) {
           const step = tileRow < emptyRow ? -1 : 1;
           for (let r = emptyRow; r !== tileRow; r += step) {
             const target = r * GRID_SIZE + tileCol;
@@ -1074,9 +1096,6 @@
         }
       }
 
-      /**
-       * Renderiza visualmente o tabuleiro 4x4
-       */
       function renderBoard() {
         puzzleBoard.innerHTML = '';
 
@@ -1105,7 +1124,6 @@
         });
       }
 
-      // Abertura e fechamento do modal do jogo
       openGameBtn.addEventListener('click', () => {
         if (!gameInitialized) {
           resetGame();
@@ -1124,7 +1142,7 @@
       shuffleBtn.addEventListener('click', resetGame);
       playAgainBtn.addEventListener('click', resetGame);
 
-      // Suporte a teclado: Escape fecha modais e Setas movem peças quando o joguinho está aberto
+      // Teclado: Escape fecha modais e Setas movem peças quando o joguinho está aberto
       document.addEventListener('keydown', (event) => {
         const isNoteOpen = !noteModal.classList.contains('hidden');
         const isGameOpen = !gameModal.classList.contains('hidden');
@@ -1142,7 +1160,6 @@
         const emptyCol = emptyIdx % GRID_SIZE;
         let targetIdx = -1;
 
-        // A direção da seta indica para onde a peça vizinha desliza
         if (event.key === 'ArrowUp' && emptyRow < GRID_SIZE - 1) {
           targetIdx = emptyIdx + GRID_SIZE;
         } else if (event.key === 'ArrowDown' && emptyRow > 0) {
@@ -1158,7 +1175,7 @@
           slideAtIndex(targetIdx);
         }
       });
-    })();
+    });
   </script>
 </body>
 </html>
